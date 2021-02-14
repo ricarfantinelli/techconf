@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=stgappfinalmigration;AccountKey=UT51RNFV0ZuTGauPgSu+3DgMUj7tKj8OsiPYDZdLqKkjQIHK59l3h73GZpKaQnvisEoVzdGgr2ipSwjihDQsmA==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "sbnotificationtechconf_SERVICEBUS": "Endpoint=sb://sb-notification-techconf.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QLkjcB41bESCyA1ONRZpncYWKBZMfhv1RlnouOFJd6Q=",
+    "PostConn" : "dbname='techconfdb' user='admric@techconfdb-migration' host='techconfdb-migration.postgres.database.azure.com' password='pass123456@' port='5432'", 
+    "SENDGRID_API_KEY" : "SG.GYlCv6TOQouKv0jsxx8kuw.Ike8ot3YMsG-k7TceFG386P88oQh0IVTud3TtvVS4nM"
+  }
+}
