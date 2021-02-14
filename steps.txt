@@ -1,0 +1,94 @@
+Final project
+
+1) 
+- Azure Database for PostegreSQL: 
+    Admin username: admric
+	Password: pass123456@
+ 
+ 
+2)
+ c:\> pg_restore --host=techconfdb-migration.postgres.database.azure.com --port=5432 --no-tablespaces  --dbname=techconfdb --username=admric@techconfdb-migration techconfdb_backup.tar 
+ 
+3) Creating webapp 
+c:\> az webapp up `
+ --resource-group final-proj-migration-azure-rg `
+ --name migration-webapp-final-proj `
+ --location westeurope `
+ --sku F1 `
+ --verbose 
+
+
+4) Had to uninstall Python and Anaconda and re-installed Python 3.9.1 with the option For All Users checked.
+
+5) Look out for big folders. Venv has a limitation when it comes to it.
+
+6) Update pip
+c:\> py -m pip install --upgrade pip
+
+7) Creating virtual env
+c:\> py -m venv venv 
+    
+8) Activate the Virtual Env.
+
+9) install all requirements
+c:\> pip install -r requirements.txt
+
+10) Running the app
+c:\> py application.py
+
+11) Had to add some dependencies to requirements.txt as they werent there and even with pip freeze > requirements.txt it didnt
+    get all proper dependencies
+	
+12) Creating empty function on Azure
+az functionapp create `
+ --resource-group final-proj-migration-azure-rg `
+ --name techconf-notific-funcapp `
+ --storage-account stgappfinalmigration `
+ --os-type Linux `
+ --consumption-plan-location westeurope `
+ --runtime python	
+
+ 
+12) Deploying function to azure.
+Make sure that there is a requirements.txt in the folder you will run this command. Function app needs requirements.txt.
+
+func azure functionapp publish techconf-notific-funcapp --build remote
+
+13) Removed azure-servicebus==0.50.2
+and add azure-servicebus==7.0.1
+and then resolved a conflit changing to msrest==0.6.21 (to be) instead of  msrest==0.6.17 (as is)
+Had to replace psycopg2 with psycopg2-binary==2.8.6
+
+pip freeze > requirements.txt
+
+16) Changed the code to send to the service Bus the nro of notification.
+
+17) tested locally by using within Venv
+python application.py 
+
+18) re-deploy to Azure by using: 
+ az webapp up `
+ --resource-group final-proj-migration-azure-rg `
+ --name migration-webapp-final-proj `
+ --location westeurope `
+ --sku F1 `
+ --verbose 
+ 
+ 
+-------------
+Dear participant, 
+
+The Python P Conference will be held in Krakow Poland, on 16th February, starting at 7 AM until 6 PM.
+
+I hope you make this conference as it will bring up a lot of important matters related to Python. 
+
+
+---------------
+Day 14/02/2021
+
+azure database for postgresql €2.60
+virtual machines €1.57
+azure databricks €1.50
+storage €0.46
+application gateway €0.03
+service bus €0.00
